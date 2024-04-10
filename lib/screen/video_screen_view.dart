@@ -91,15 +91,13 @@ class _MyVideoPlayerState extends State<MyVideoPlayer> {
 
   @override
   void dispose() {
+    videoPlayerController?.dispose();
     flickManager?.dispose();
     super.dispose();
   }
 
   void _navigateToStartVideoBtnScreen() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => StartVideoBtn()),
-    );
+    Navigator.pop(context);
   }
 
   @override
@@ -118,12 +116,11 @@ class _MyVideoPlayerState extends State<MyVideoPlayer> {
               children: [
                 Center(
                   child: CircularProgressIndicator(
-                    value: ((videoPlayerController?.value.position.inMilliseconds ?? 0) /
-                        (videoPlayerController?.value.duration.inMilliseconds ?? 0)),
+                    value:
+                        ((videoPlayerController?.value.position.inMilliseconds ?? 0) / (videoPlayerController?.value.duration.inMilliseconds ?? 0)),
                     backgroundColor: Colors.grey.shade400,
                     valueColor: const AlwaysStoppedAnimation<Color>(Colors.grey),
                   ),
-
                 ),
                 Center(
                   child: Padding(
@@ -151,7 +148,8 @@ class _MyVideoPlayerState extends State<MyVideoPlayer> {
               width: double.infinity,
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: LinearProgressIndicator(
-                value: 1.0 - ((videoPlayerController?.value.position.inMilliseconds ?? 0) / (videoPlayerController?.value.duration.inMilliseconds ?? 0)),
+                value:
+                    1.0 - ((videoPlayerController?.value.position.inMilliseconds ?? 0) / (videoPlayerController?.value.duration.inMilliseconds ?? 0)),
                 minHeight: 5,
                 backgroundColor: Colors.grey,
                 valueColor: const AlwaysStoppedAnimation<Color>(Colors.red),
