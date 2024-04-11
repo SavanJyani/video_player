@@ -26,12 +26,12 @@ class _StartVideoBtnState extends State<StartVideoBtn> {
               ),
             );
           },
-          child: Text("Video Start"),
           style: ElevatedButton.styleFrom(
             shape: BeveledRectangleBorder(
                 borderRadius: BorderRadius.circular(12)
             ),
           ),
+          child: Text("Video Start"),
         ),
       ),
     );
